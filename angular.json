@@ -6,5 +6,102 @@
   },
   "newProjectRoot": "projects",
   "projects": {
+    "bash-tutorials-site": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/bash-tutorials-site",
+      "sourceRoot": "projects/bash-tutorials-site/src",
+      "prefix": "tcarvi",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/bash-tutorials-site",
+            "index": "projects/bash-tutorials-site/src/index.html",
+            "main": "projects/bash-tutorials-site/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/bash-tutorials-site/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/bash-tutorials-site/src/favicon.ico",
+              "projects/bash-tutorials-site/src/assets"
+            ],
+            "styles": [
+              "projects/bash-tutorials-site/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "bash-tutorials-site:build:production"
+            },
+            "development": {
+              "browserTarget": "bash-tutorials-site:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "bash-tutorials-site:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/bash-tutorials-site/tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/bash-tutorials-site/src/favicon.ico",
+              "projects/bash-tutorials-site/src/assets"
+            ],
+            "styles": [
+              "projects/bash-tutorials-site/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
   }
 }
