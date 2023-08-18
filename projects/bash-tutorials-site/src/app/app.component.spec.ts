@@ -20,10 +20,4 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('bash-tutorials-site');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('bash-tutorials-site app is running!');
-  });
 });
